@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/ui/home/home_screen.dart';
+import 'package:islami_app/ui/home/tabs/quran_tab/quran_detalis/quran_details.dart';
 import 'package:islami_app/ui/splash/splash_screen.dart';
 
 void main() {
@@ -12,7 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         SplashScreen.routeName: (_) => SplashScreen(),
-        HomeScreen.routeName: (_) => HomeScreen()
+        HomeScreen.routeName: (_) => HomeScreen(),
+        QuranDetails.routeName: (_) => QuranDetails()
       },
       theme: ThemeData(
           appBarTheme: AppBarTheme(
