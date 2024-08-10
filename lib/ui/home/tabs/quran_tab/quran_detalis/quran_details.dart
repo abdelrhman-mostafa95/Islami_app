@@ -28,12 +28,21 @@ class _QuranDetailsState extends State<QuranDetails> {
         ),
         body: verses.isEmpty
             ? Center(child: CircularProgressIndicator())
-            : ListView.separated(
-                itemBuilder: (context, index) => Verses(verse: verses[index]),
-                separatorBuilder: (context, index) => Divider(
-                      color: Color(0xFFB7935F),
-                    ),
-                itemCount: verses.length),
+            : Card(
+                margin: EdgeInsets.all(12),
+                child: ListView.separated(
+                    itemBuilder: (context, index) => Verses(
+                          verse: verses[index],
+                          index: index,
+                        ),
+                    separatorBuilder: (context, index) =>
+                        Padding(padding: EdgeInsets.all(0))
+                    // Divider(
+                    //   // color: Color(0xFFB7935F),
+                    // ),
+                    ,
+                    itemCount: verses.length),
+              ),
       ),
     );
   }
@@ -43,9 +52,6 @@ class _QuranDetailsState extends State<QuranDetails> {
         await rootBundle.loadString('assets/files/${index + 1}.txt');
     List<String> suraLines = fileContent.split('\n');
     verses = suraLines;
-    verses.forEach(
-      (element) => print(element),
-    );
     setState(() {});
   }
 }
