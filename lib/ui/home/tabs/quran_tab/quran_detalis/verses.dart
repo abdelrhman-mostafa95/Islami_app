@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 
 class Verses extends StatelessWidget {
   String verse;
+  int index;
 
-  Verses({required this.verse});
+  Verses({required this.verse, required this.index});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.center,
+      margin: EdgeInsets.all(3),
+      padding: EdgeInsets.all(10),
+      // alignment: Alignment.center,
       child: Text(
-        verse,
+        '$verse${index + 1}',
         textAlign: TextAlign.center,
         textDirection: TextDirection.rtl,
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w200),
+        style: Theme.of(context).textTheme.bodySmall,
       ),
     );
   }
