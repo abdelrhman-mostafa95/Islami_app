@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/ui/home/tabs/quran_tab/sura_title.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuranTab extends StatelessWidget {
   List<String> suraNames = [
@@ -253,25 +254,22 @@ class QuranTab extends StatelessWidget {
                   Expanded(
                     child: Container(
                       alignment: Alignment.center,
-                      child: Text('عدد الايات',
-                          style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black)),
+                      child: Text(AppLocalizations.of(context)!.verses_number,
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelMedium
+                              ?.copyWith(fontSize: 20)),
                     ),
                   ),
                   Container(
-                    color: Color(0xFFB7935F),
+                    color: Theme.of(context).dividerColor,
                     width: 2,
                   ),
                   Expanded(
                     child: Container(
                       alignment: Alignment.center,
-                      child: Text('أسم السورة',
-                          style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black)),
+                      child: Text(AppLocalizations.of(context)!.chapter_name,
+                          style: Theme.of(context).textTheme.labelMedium),
                     ),
                   ),
                 ],
@@ -279,7 +277,8 @@ class QuranTab extends StatelessWidget {
             ),
             decoration: BoxDecoration(
                 border: Border.symmetric(
-                    horizontal: BorderSide(color: Color(0xFFB7935F)))),
+                    horizontal:
+                        BorderSide(color: Theme.of(context).dividerColor))),
           ),
           Expanded(
             flex: 2,
@@ -290,10 +289,10 @@ class QuranTab extends StatelessWidget {
                       index: index,
                     ),
                 separatorBuilder: (context, index) => Divider(
-                      height: 0,
+                  height: 0,
                       endIndent: 30,
                       indent: 30,
-                      color: Color(0xFFB7935F),
+                      color: Theme.of(context).dividerColor,
                     ),
                 itemCount: suraNames.length),
           )

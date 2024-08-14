@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_app/ui/home/tabs/hadeth_tab/hadith_title-widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HadethTab extends StatelessWidget {
   List<HadithItem> hadithList = [];
@@ -25,16 +26,13 @@ class HadethTab extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           border: Border.symmetric(
-                              horizontal:
-                                  BorderSide(color: Color(0xFFB7935F)))),
+                              horizontal: BorderSide(
+                                  color: Theme.of(context).dividerColor))),
                       child: Expanded(
                         child: Container(
                           alignment: Alignment.center,
-                          child: Text('الأحاديث',
-                              style: TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.black)),
+                          child: Text(AppLocalizations.of(context)!.ahadith,
+                              style: Theme.of(context).textTheme.labelMedium),
                         ),
                       ),
                     )),
@@ -44,10 +42,10 @@ class HadethTab extends StatelessWidget {
                       itemBuilder: (context, index) => HadithTitleWidget(
                             hadithItem: hadithList[index],
                           ),
-                      separatorBuilder: (context, index) => Container(
-                            width: double.infinity,
-                            height: 2,
-                            color: Color(0xFFB7935F),
+                      separatorBuilder: (context, index) => Divider(
+                            indent: 30,
+                            endIndent: 30,
+                            color: Theme.of(context).dividerColor,
                           ),
                       itemCount: hadithList.length),
                 )
