@@ -20,6 +20,7 @@ class _ThemeBottomState extends State<ThemeBottom> {
         children: [
           InkWell(
               onTap: () {
+                Navigator.pop(context);
                 provider.changeThemeMode(ThemeMode.light);
               },
               child: provider.currentTheme == ThemeMode.light
@@ -31,6 +32,7 @@ class _ThemeBottomState extends State<ThemeBottom> {
           ),
           InkWell(
               onTap: () {
+                Navigator.pop(context);
                 provider.changeThemeMode(ThemeMode.dark);
               },
               child: provider.currentTheme == ThemeMode.dark
