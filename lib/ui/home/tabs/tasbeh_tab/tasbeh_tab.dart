@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../provider/settings_provider/settings_provider.dart';
 
 class TasbehTab extends StatefulWidget {
   @override
@@ -20,6 +23,7 @@ class _TasbehTabState extends State<TasbehTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingsProvider>(context);
     return Scaffold(
       body: Center(
         child: Column(
@@ -27,7 +31,9 @@ class _TasbehTabState extends State<TasbehTab> {
             Stack(
               alignment: Alignment.topCenter,
               children: [
-                Image.asset('assets/images/head_sebha_logo.png'),
+                Image.asset(provider.currentTheme == ThemeMode.light
+                    ? 'assets/images/head_sebha_logo.png'
+                    : 'assets/images/head_sebha_dark.png'),
                 Padding(
                   padding: const EdgeInsets.only(top: 75),
                   child: Transform.rotate(
@@ -36,8 +42,10 @@ class _TasbehTabState extends State<TasbehTab> {
                         onTap: () {
                           onTap();
                         },
-                        child:
-                            Image.asset('assets/images/body_sebha_logo.png')),
+                        child: Image.asset(
+                            provider.currentTheme == ThemeMode.light
+                                ? 'assets/images/body_sebha_logo.png'
+                                : 'assets/images/body_sebha_dark.png')),
                   ),
                 ),
               ],
@@ -46,17 +54,17 @@ class _TasbehTabState extends State<TasbehTab> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "عدد التسبيحات",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),
+                style: Theme.of(context).textTheme.labelMedium,
               ),
             ),
             Container(
               padding: EdgeInsets.all(5),
               decoration: BoxDecoration(
-                  color: Color(0xFFB7935F),
+                  color: Theme.of(context).dividerColor,
                   borderRadius: BorderRadius.circular(10)),
               child: Text(
                 '$counter',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
             Padding(
@@ -64,11 +72,11 @@ class _TasbehTabState extends State<TasbehTab> {
               child: Container(
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                    color: Color(0xFFB7935F),
+                    color: Theme.of(context).dividerColor,
                     borderRadius: BorderRadius.circular(20)),
                 child: Text(
                   '${tsbeh[index]}',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
             ),

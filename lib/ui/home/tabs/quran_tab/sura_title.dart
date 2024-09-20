@@ -27,12 +27,9 @@ class SuraTitle extends StatelessWidget {
                   child: Container(
                       alignment: Alignment.center,
                       child: Text(numOfVerses,
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400)))),
+                          style: Theme.of(context).textTheme.titleMedium))),
               Container(
-                color: Color(0xFFB7935F),
+                color: Theme.of(context).dividerColor,
                 width: 2,
               ),
               Expanded(
@@ -40,10 +37,7 @@ class SuraTitle extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Text(
                         suraTitle,
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w400),
+                        style: Theme.of(context).textTheme.titleMedium,
                       ))),
             ],
           ),
