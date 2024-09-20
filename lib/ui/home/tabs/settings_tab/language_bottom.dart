@@ -21,6 +21,7 @@ class _LanguageBottomState extends State<LanguageBottom> {
         children: [
           InkWell(
               onTap: () {
+                Navigator.pop(context);
                 provider.changeAppLanguage('ar');
               },
               child: provider.currentLanguage == 'ar'
@@ -32,6 +33,7 @@ class _LanguageBottomState extends State<LanguageBottom> {
           ),
           InkWell(
               onTap: () {
+                Navigator.pop(context);
                 provider.changeAppLanguage('en');
               },
               child: provider.currentLanguage == 'en'

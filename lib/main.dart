@@ -11,7 +11,10 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
-      create: (context) => SettingsProvider(), child: MyApp()));
+      create: (context) => SettingsProvider()
+        ..getLanguge()
+        ..getTheme(),
+      child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
