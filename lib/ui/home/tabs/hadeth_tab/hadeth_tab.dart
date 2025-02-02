@@ -3,7 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:islami_app/ui/home/tabs/hadeth_tab/hadith_title-widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class HadethTab extends StatelessWidget {
+class HadethTab extends StatefulWidget {
+  @override
+  State<HadethTab> createState() => _HadethTabState();
+}
+
+class _HadethTabState extends State<HadethTab> {
   List<HadithItem> hadithList = [];
 
   @override
@@ -66,6 +71,9 @@ class HadethTab extends StatelessWidget {
       HadithItem hadithItem =
           HadithItem(title: hadithTitle, content: hadithContent);
       hadithList.add(hadithItem);
+      setState(() {
+
+      });
     }
   }
 }
