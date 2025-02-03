@@ -4,6 +4,7 @@ class MyThemeData {
   static const Color goldColor = Color(0xFFB7935F);
   static const Color darkColor = Color(0xFF141A2E);
   static const Color yellowColor = Color(0xFFFACC1D);
+  static const Color whiteColor = Color(0xFFF3F1EC);
   static ThemeData lightTheme = ThemeData(
       primaryColor: goldColor,
       appBarTheme: AppBarTheme(
