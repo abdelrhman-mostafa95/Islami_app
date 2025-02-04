@@ -6,18 +6,13 @@ import 'package:provider/provider.dart';
 import '../../../../api/model/Radios.dart';
 import '../../../../style/theme_data.dart';
 
-class RadioWidget extends StatefulWidget {
+class RadioWidget extends StatelessWidget {
   final Radios radioChannels;
   void Function() next,previous;
   final AudioPlayer player;
 
   RadioWidget({super.key, required this.radioChannels, required this.next, required this.previous, required this.player});
 
-  @override
-  State<RadioWidget> createState() => _RadioWidgetState();
-}
-
-class _RadioWidgetState extends State<RadioWidget> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<SettingsProvider>(context);
@@ -33,7 +28,7 @@ class _RadioWidgetState extends State<RadioWidget> {
                       ? MyThemeData.goldColor
                       : MyThemeData.whiteColor),
               onPressed: () {
-                widget.previous();
+                previous();
               },
             ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.06),
@@ -43,7 +38,7 @@ class _RadioWidgetState extends State<RadioWidget> {
                         ? MyThemeData.goldColor
                         : MyThemeData.whiteColor),
               onPressed: () {
-                widget.player.play(UrlSource(widget.radioChannels.url!));
+                player.play(UrlSource(radioChannels.url!));
               },
                 ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.06),
@@ -53,7 +48,7 @@ class _RadioWidgetState extends State<RadioWidget> {
                       ? MyThemeData.goldColor
                       : MyThemeData.whiteColor),
               onPressed: () {
-                widget.player.pause();
+                player.pause();
               },
             ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.06),
@@ -63,12 +58,12 @@ class _RadioWidgetState extends State<RadioWidget> {
                       ? MyThemeData.goldColor
                       : MyThemeData.whiteColor),
               onPressed: () {
-                widget.next();
+                next();
               },
             ),
           ],
         ),
-        Text(widget.radioChannels.name ?? '', style: TextStyle(color: provider.currentTheme == ThemeMode.light
+        Text(radioChannels.name ?? '', style: TextStyle(color: provider.currentTheme == ThemeMode.light
             ? MyThemeData.goldColor
             : MyThemeData.whiteColor),)
       ],
