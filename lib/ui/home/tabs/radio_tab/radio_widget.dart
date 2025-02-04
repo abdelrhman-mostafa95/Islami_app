@@ -8,15 +8,16 @@ import '../../../../style/theme_data.dart';
 
 class RadioWidget extends StatefulWidget {
   final Radios radioChannels;
+  void Function() next,previous;
+  final AudioPlayer player;
 
-  const RadioWidget({super.key, required this.radioChannels});
+  RadioWidget({super.key, required this.radioChannels, required this.next, required this.previous, required this.player});
 
   @override
   State<RadioWidget> createState() => _RadioWidgetState();
 }
 
 class _RadioWidgetState extends State<RadioWidget> {
-  final player = AudioPlayer();
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<SettingsProvider>(context);
@@ -26,10 +27,15 @@ class _RadioWidgetState extends State<RadioWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.skip_previous,
-                color: provider.currentTheme == ThemeMode.light
-                    ? MyThemeData.goldColor
-                    : MyThemeData.whiteColor),
+            IconButton(
+              icon: Icon(Icons.skip_previous,size: 40,
+                  color: provider.currentTheme == ThemeMode.light
+                      ? MyThemeData.goldColor
+                      : MyThemeData.whiteColor),
+              onPressed: () {
+                widget.previous();
+              },
+            ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.06),
             IconButton(
                 icon: Icon(Icons.play_arrow,size: 40,
@@ -37,7 +43,7 @@ class _RadioWidgetState extends State<RadioWidget> {
                         ? MyThemeData.goldColor
                         : MyThemeData.whiteColor),
               onPressed: () {
-                player.play(UrlSource(widget.radioChannels.url!));
+                widget.player.play(UrlSource(widget.radioChannels.url!));
               },
                 ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.06),
@@ -47,14 +53,19 @@ class _RadioWidgetState extends State<RadioWidget> {
                       ? MyThemeData.goldColor
                       : MyThemeData.whiteColor),
               onPressed: () {
-                player.pause();
+                widget.player.pause();
               },
             ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.06),
-            Icon(Icons.skip_next,
-                color: provider.currentTheme == ThemeMode.light
-                    ? MyThemeData.goldColor
-                    : MyThemeData.whiteColor)
+            IconButton(
+              icon: Icon(Icons.skip_next,size: 40,
+                  color: provider.currentTheme == ThemeMode.light
+                      ? MyThemeData.goldColor
+                      : MyThemeData.whiteColor),
+              onPressed: () {
+                widget.next();
+              },
+            ),
           ],
         ),
         Text(widget.radioChannels.name ?? '', style: TextStyle(color: provider.currentTheme == ThemeMode.light
